@@ -7,6 +7,25 @@ This library is a Delphi class that allows you to easily consume the OpenAI Chat
 ## Usage
 To use the class, simply add it to your Delphi project and call the appropriate methods to send messages and receive responses from the ChatGPT API.
 
+## Example Usage
+Here is a simple example of how to use the ChatGPT4Delphi class:
+
+```delphi
+uses ChatGPT4Delphi;
+
+var
+  ChatGPT: TChatGPT;
+  Response: TChatGPTResponse;
+begin
+  ChatGPT := TChatGPT.Create;
+  try
+    Response := ChatGPT.Ask('What is the capital of France?');
+    WriteLn(Response.Response);
+  finally
+    ChatGPT.Free;
+  end;
+end;
+```
 ## Requirements
 - Delphi 10.3 or later
 
@@ -24,6 +43,26 @@ Esta biblioteca é uma classe Delphi que permite consumir facilmente a API do Ch
 
 ## Uso
 Para usar a classe, basta adicioná-la ao seu projeto Delphi e chamar os métodos apropriados para enviar mensagens e receber respostas da API do ChatGPT.
+
+## Exemplo de Uso
+Aqui está um exemplo simples de como usar a classe ChatGPT4Delphi:
+
+```delphi
+uses ChatGPT4Delphi;
+
+var
+  ChatGPT: TChatGPT;
+  Response: TChatGPTResponse;
+begin
+  ChatGPT := TChatGPT.Create;
+  try
+    Response := ChatGPT.Ask('Qual é a capital da França?');
+    WriteLn(Response.Response);
+  finally
+    ChatGPT.Free;
+  end;
+end;
+```
 
 ## Requisitos
 - Delphi 10.3 ou posterior
