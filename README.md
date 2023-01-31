@@ -32,6 +32,27 @@ end;
 ## Contributing
 If you want to contribute to the development of this library, please feel free to fork the repository and make a pull request.
 
+# Delmar de Lima (Cortes DEV)
+
+## Support
+Get in touch with us for any questions or inquiries through WhatsApp: https://wa.me/5597991442486
+
+## Donations 
+Donate via PIX:
+### Email: delmar.apui@gmail.com
+### Cell: (97) 99144-2486
+
+## Connect with us
+##### [YouTube][] 
+##### [WhatsApp][]
+##### [Instagram][]
+##### [Facebook][] 
+##### [Delphi Modern Layout Source Code][]
+##### [CortesDEV Website][] <br/>
+
+Get to know us better on our YouTube channel: <br/>
+**[>> FIND OUT MORE](https://bit.ly/SeguirCortesDev)**
+
 ## License
 This library is licensed under the MIT license.
 
@@ -70,5 +91,38 @@ end;
 ## Contribuindo
 Se você quiser contribuir para o desenvolvimento desta biblioteca, sinta-se à vontade para fazer um fork do repositório e fazer uma pull request.
 
+# Delmar de Lima (Cortes DEV)
+
+## Suporte
+Entre em contato conosco para qualquer dúvida ou pergunta pelo WhatsApp: https://wa.me/5597991442486
+
+## Doações 
+Faça sua doação via PIX:
+### Email: delmar.apui@gmail.com
+### Celular: (97) 99144-2486
+
+## Conecte-se com a gente
+##### [YouTube][] 
+##### [WhatsApp][]
+##### [Instagram][]
+##### [Facebook][] 
+##### [Código Fonte Layout Moderno em Delphi][]
+##### [Site CortesDEV][] <br/>
+
+Conheça mais sobre nós em nosso canal no YouTube: <br/>
+**[>> CONHEÇA MAIS](https://bit.ly/SeguirCortesDev)**
+
+[YouTube]: https://bit.ly/SeguirCortesDev
+[WhatsApp]: https://wa.me/5597991442486
+[Instagram]: https://www.instagram.com/cortesdevoficial/
+[Facebook]: https://www.fb.com/cortesdevoficial
+[Código Fonte Layout Moderno em Delphi]: https://bit.ly/LayoutModerno
+
 ## Licença
 Esta biblioteca é licenciada sob a licença MIT.
+
+[YouTube]: https://bit.ly/SeguirCortesDev
+[WhatsApp]: https://wa.me/5597991442486
+[Instagram]: https://www.instagram.com/cortesdevoficial/
+[Facebook]: https://www.fb.com/cortesdevoficial
+[Delphi Modern Layout Source Code]: https://bit.ly/LayoutModerno
