@@ -24,7 +24,7 @@ begin
   finally
     ChatBot.Free;
   end;
-end.
+end;
 ```
 ## Requirements
 - Delphi 10.3 or later
@@ -53,7 +53,7 @@ Get to know us better on our YouTube channel: <br/>
 **[>> FIND OUT MORE](https://bit.ly/SeguirCortesDev)**
 
 ## License
-This library is licensed under the MIT license.
+This library is licensed under the GPL-3.0 license. See [LICENSE](LICENSE) for more details.
 
 # ChatGPT4Delphi
 Uma classe Delphi para consumir facilmente a API do ChatGPT da OpenAI.
@@ -117,7 +117,7 @@ Conheça mais sobre nós em nosso canal no YouTube: <br/>
 [Código Fonte Layout Moderno em Delphi]: https://bit.ly/LayoutModerno
 
 ## Licença
-Esta biblioteca é licenciada sob a licença MIT.
+Esta biblioteca é licenciada sob a licença GPL-3.0. Veja [LICENSE](LICENSE) para mais detalhes.
 
 [YouTube]: https://bit.ly/SeguirCortesDev
 [WhatsApp]: https://wa.me/5597991442486
