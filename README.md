@@ -14,17 +14,17 @@ Here is a simple example of how to use the ChatGPT4Delphi class:
 uses ChatGPT4Delphi;
 
 var
-  ChatGPT: TChatGPT;
-  Response: TChatGPTResponse;
+  ChatBot: TChatGPT4Delphi;
+  Response: string;
 begin
-  ChatGPT := TChatGPT.Create;
+  ChatBot := TChatGPT4Delphi.Create('https://api.openai.com/v1/engines/davinci/jobs', 'YOUR_ACCESS_KEY_HERE');
   try
-    Response := ChatGPT.Ask('What is the capital of France?');
-    WriteLn(Response.Response);
+    Response := ChatBot.Query('What is the capital of France?');
+    WriteLn(Response);
   finally
-    ChatGPT.Free;
+    ChatBot.Free;
   end;
-end;
+end.
 ```
 ## Requirements
 - Delphi 10.3 or later
@@ -48,7 +48,6 @@ Donate via PIX:
 ##### [Instagram][]
 ##### [Facebook][] 
 ##### [Delphi Modern Layout Source Code][]
-##### [CortesDEV Website][] <br/>
 
 Get to know us better on our YouTube channel: <br/>
 **[>> FIND OUT MORE](https://bit.ly/SeguirCortesDev)**
@@ -72,15 +71,15 @@ Aqui está um exemplo simples de como usar a classe ChatGPT4Delphi:
 uses ChatGPT4Delphi;
 
 var
-  ChatGPT: TChatGPT;
-  Response: TChatGPTResponse;
+  ChatBot: TChatGPT4Delphi;
+  Response: string;
 begin
-  ChatGPT := TChatGPT.Create;
+  ChatBot := TChatGPT4Delphi.Create('https://api.openai.com/v1/engines/davinci/jobs', 'SUA_CHAVE_ACESSO_AQUI');
   try
-    Response := ChatGPT.Ask('Qual é a capital da França?');
-    WriteLn(Response.Response);
+    Response := ChatBot.Query('Qual é a capital da França?');
+    WriteLn(Response);
   finally
-    ChatGPT.Free;
+    ChatBot.Free;
   end;
 end;
 ```
@@ -107,7 +106,6 @@ Faça sua doação via PIX:
 ##### [Instagram][]
 ##### [Facebook][] 
 ##### [Código Fonte Layout Moderno em Delphi][]
-##### [Site CortesDEV][] <br/>
 
 Conheça mais sobre nós em nosso canal no YouTube: <br/>
 **[>> CONHEÇA MAIS](https://bit.ly/SeguirCortesDev)**
