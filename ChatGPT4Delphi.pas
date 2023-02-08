@@ -3,7 +3,7 @@ unit ChatGPT4Delphi;
 interface
 
 uses
-  System.JSON, System.Classes, IdHTTP;
+  System.JSON, System.Classes, IdHTTP, IdSSLOpenSSL;
 
 type
   TChatGPT4Delphi = class
@@ -47,6 +47,7 @@ var
 begin
   HTTP := TIdHTTP.Create(nil);
   try
+    HTTP.IOHandler := TIdSSLIOHandlerSocketOpenSSL.Create(HTTP);
     JSON := TJSONObject.Create;
     try
       JSON.AddPair('prompt', Message);
