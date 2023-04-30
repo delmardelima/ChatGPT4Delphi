@@ -17,7 +17,7 @@ var
   ChatBot: TChatGPT4Delphi;
   Response: string;
 begin
-  ChatBot := TChatGPT4Delphi.Create('https://api.openai.com/v1/engines/davinci/jobs', 'YOUR_ACCESS_KEY_HERE');
+  ChatBot := TChatGPT4Delphi.Create('YOUR_ACCESS_KEY_HERE');
   try
     Response := ChatBot.Query('What is the capital of France?');
     WriteLn(Response);
@@ -74,7 +74,7 @@ var
   ChatBot: TChatGPT4Delphi;
   Response: string;
 begin
-  ChatBot := TChatGPT4Delphi.Create('https://api.openai.com/v1/engines/davinci/jobs', 'SUA_CHAVE_ACESSO_AQUI');
+  ChatBot := TChatGPT4Delphi.Create('SUA_CHAVE_ACESSO_AQUI');
   try
     Response := ChatBot.Query('Qual é a capital da França?');
     WriteLn(Response);
