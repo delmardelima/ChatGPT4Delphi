@@ -3,35 +3,27 @@ unit ChatGPT4Delphi;
 interface
 
 uses
-  System.JSON, System.Classes, IdHTTP, IdSSLOpenSSL, IdStack;
+  IdHTTP, IdGlobal, IdSSLOpenSSL, System.Classes, IdStack, System.SysUtils,
+  System.JSON, IdException;
 
 type
   TChatGPT4Delphi = class
   private
-    FEndpoint: string;
     FAccessKey: string;
     FResponse: string;
-    procedure SetEndpoint(const Value: string);
     procedure SetAccessKey(const Value: string);
   public
-    constructor Create(Endpoint, AccessKey: string);
-    function Query(Message: string): string;
-    property Endpoint: string read FEndpoint write SetEndpoint;
+    constructor Create(AccessKey: string);
+    function Query(sMessage: string): string;
     property AccessKey: string read FAccessKey write SetAccessKey;
     property Response: string read FResponse;
   end;
 
 implementation
 
-constructor TChatGPT4Delphi.Create(Endpoint, AccessKey: string);
+constructor TChatGPT4Delphi.Create(AccessKey: string);
 begin
-  FEndpoint := Endpoint;
   FAccessKey := AccessKey;
-end;
-
-procedure TChatGPT4Delphi.SetEndpoint(const Value: string);
-begin
-  FEndpoint := Value;
 end;
 
 procedure TChatGPT4Delphi.SetAccessKey(const Value: string);
@@ -39,34 +31,46 @@ begin
   FAccessKey := Value;
 end;
 
-function TChatGPT4Delphi.Query(Message: string): string;
+function TChatGPT4Delphi.Query(sMessage: string): string;
 var
-  HTTP: TIdHTTP;
+  http: TIdHTTP;
+  sslHandler: TIdSSLIOHandlerSocketOpenSSL;
+  url, body, Response: string;
   JSON: TJSONObject;
-  Data: TStringStream;
+  Choices: TJSONArray;
 begin
-  HTTP := TIdHTTP.Create(nil);
+  url := 'https://api.openai.com/v1/chat/completions';
+  body := Format
+    ('{"model": "%s", "messages": [{"role": "user", "content": "%s"}]}',
+    ['gpt-3.5-turbo', sMessage]);
+  http := TIdHTTP.Create(nil);
+  sslHandler := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
   try
-    HTTP.IOHandler := TIdSSLIOHandlerSocketOpenSSL.Create(HTTP);
-    TIdStack.IncUsage;
-    JSON := TJSONObject.Create;
+    sslHandler.SSLOptions.Method := sslvTLSv1_2;
+    http.IOHandler := sslHandler;
+    http.Request.ContentType := 'application/json';
+    http.Request.Accept := 'application/json';
+    http.Request.CharSet := 'UTF-8';
+    http.Request.CustomHeaders.AddValue('Authorization',
+      Format('Bearer %s', [FAccessKey]));
     try
-      IdSSLOpenSSL.SSLOptions.Method := sslvTLSv1_2;
-      JSON.AddPair('prompt', Message);
-      Data := TStringStream.Create(JSON.ToString);
-      try
-        FResponse := HTTP.Post(FEndpoint, Data);
-      finally
-        Data.Free;
-      end;
-    finally
-      JSON.Free;
-      TIdStack.DecUsage;
+      Response := http.Post(url, TStringStream.Create(body, TEncoding.UTF8));
+    except
+      on E: EIdHTTPProtocolException do
+        raise Exception.CreateFmt('Indy exception (%d): %s',
+          [E.ErrorCode, E.Message + sLineBreak + E.ErrorMessage]);
+      // retorna a exceção com raise
     end;
+    Response := IndyTextEncoding_UTF8.GetString
+      (IndyTextEncoding_OSDefault.GetBytes(Response));
+    JSON := TJSONObject.ParseJSONValue(Response) as TJSONObject;
+    Choices := JSON.GetValue('choices') as TJSONArray;
+    Result := Choices.Items[0].GetValue<TJSONObject>('message')
+      .GetValue('content').Value;
   finally
-    HTTP.Free;
+    http.Free;
+    sslHandler.Free;
   end;
-  Result := FResponse;
 end;
 
 end.
